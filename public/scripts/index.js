@@ -34,11 +34,17 @@ const formsAndHandlers = {
   'change-password': changePassword,
   'sign-in': signIn,
   'sign-out': signOut,
+
   'view-all-freets': viewAllFreets,
   'view-freets-by-author': viewFreetsByAuthor,
   'create-freet': createFreet,
   'edit-freet': editFreet,
-  'delete-freet': deleteFreet
+  'delete-freet': deleteFreet,
+
+  'view-all-likes': viewAllLikes,
+  'view-likes-by-username': viewLikesByUsername,
+  'create-like': createLike,
+  'delete-like': deleteLike
 };
 
 // Attach handlers to forms

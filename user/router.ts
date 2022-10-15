@@ -1,11 +1,29 @@
 import type {Request, Response} from 'express';
 import express from 'express';
 import FreetCollection from '../freet/collection';
+import LikeCollection from '../like/collection';
 import UserCollection from './collection';
 import * as userValidator from '../user/middleware';
 import * as util from './util';
 
 const router = express.Router();
+
+/**
+ * Get all the users
+ *
+ * @name GET /api/freets
+ *
+ * @return {UserResponse[]} - A list of all the freets sorted in descending
+ *                      order by date modified
+ */
+router.get(
+  '/',
+  async (req: Request, res: Response) => {
+    const users = await UserCollection.findAll();
+    const response = users.map(util.constructUserResponse);
+    res.status(200).json(response);
+  }
+);
 
 /**
  * Sign in user.
@@ -141,6 +159,7 @@ router.delete(
     const userId = (req.session.userId as string) ?? ''; // Will not be an empty string since its validated in isUserLoggedIn
     await UserCollection.deleteOne(userId);
     await FreetCollection.deleteMany(userId);
+    await LikeCollection.deleteMany(userId);
     req.session.userId = undefined;
     res.status(200).json({
       message: 'Your account has been deleted successfully.'

@@ -27,6 +27,16 @@ class UserCollection {
   }
 
   /**
+   * Find all a users.
+   *
+   * @return {Promise<HydratedDocument<User>> | Promise<null>} - The user with the given username, if any
+   */
+  static async findAll(): Promise<Array<HydratedDocument<User>>> {
+    // Retrieves all users and sorts them from most to least recent by date joined
+    return UserModel.find({}).sort({dateJoined: -1});
+  }
+
+  /**
    * Find a user by userId.
    *
    * @param {string} userId - The userId of the user to find
