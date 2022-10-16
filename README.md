@@ -567,3 +567,58 @@ This renders the `index.html` file that will be used to interact with the backen
 - `400` if the directFollowingOnly is not provided
 - `403` if the user is not logged in
 
+<br/>
+
+## TODO: Follow Model
+
+#### `GET /api/follow?follower=USERNAME` - Get follows by follower username
+
+**Returns**
+
+- An array of follow objects where the follower has username `username`
+
+**Throws**
+
+- `400` if `follower` is not given
+- `404` if `follower` is not a recognized username of any user
+
+#### `GET /api/follow?following=USERNAME` - Get follows by following username
+
+**Returns**
+
+- An array of follow objects where the followee has username `username`
+
+**Throws**
+
+- `400` if `followee` is not given
+- `404` if `followee` is not a recognized username of any user
+
+#### `POST /api/follow` - Create a new follow
+
+**Body**
+
+- `follower` _{string}_ - The username of the user that is doing the following
+- `followee` _{string}_ - The username of the user that is being followed
+
+**Returns**
+
+- A success message
+- A object with the created feedsettings
+
+**Throws**
+
+- `400` If no follower or followee specified
+- `403` If the follower user is not logged in
+- `404` If follower or followee does not exist
+
+#### `DELETE /api/follow/:followId?` - Delete an existing follow
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the followId is invalid
+
