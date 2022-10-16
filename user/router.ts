@@ -11,10 +11,10 @@ const router = express.Router();
 /**
  * Get all the users
  *
- * @name GET /api/freets
+ * @name GET /api/users
  *
- * @return {UserResponse[]} - A list of all the freets sorted in descending
- *                      order by date modified
+ * @return {UserResponse[]} - A list of all the users sorted in descending
+ *                      order by date joined
  */
 router.get(
   '/',

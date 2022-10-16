@@ -167,13 +167,13 @@ Mongoose allows you to use schema validation if you want to ensure that certain 
 
 within the schema. This tells us that the `content` field must have type `String`, and that it is required for documents in that collection. A freet must have a `String` type value for the `content` field to be added to the freets collection.
 
-## API routes
-
-The following api routes have already been implemented for you (**Make sure to document all the routes that you have added.**):
+# Fritter API routes
 
 #### `GET /`
 
 This renders the `index.html` file that will be used to interact with the backend
+
+## Freets Model
 
 #### `GET /api/freets` - Get all the freets
 
@@ -240,6 +240,10 @@ This renders the `index.html` file that will be used to interact with the backen
 - `400` if the new freet content is empty or a stream of empty spaces
 - `413` if the new freet content is more than 140 characters long
 
+<br>
+
+## Users Model 
+
 #### `POST /api/users/session` - Sign in user
 
 **Body**
@@ -267,6 +271,12 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if user is not logged in
+
+#### `GET /api/users` - Get all the users
+
+**Returns**
+
+- An array of all users sorted in descending order by date joined
 
 #### `POST /api/users` - Create an new user account
 
@@ -313,3 +323,247 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if the user is not logged in
+
+<br/>
+
+## Likes Model
+
+#### `GET /api/likes` - Get all the freets
+
+**Returns**
+
+- An array of all likes
+
+#### `GET /api/likes?username=USERNAME` - Get freets by author
+
+**Returns**
+
+- An array of likes where the liker is the user with username `username`
+
+**Throws**
+
+- `400` if `username` is not given
+- `404` if `username` is not a recognized username of any user
+
+#### `POST /api/likes` - Create a new Like
+
+**Body**
+
+- `freetId` _{string}_ - The freetId of the freet
+
+**Returns**
+
+- A success message
+- A object with the created like
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` If the freet does not exist
+
+#### `DELETE /api/likes/:freetId?` - Delete an existing like
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the likeId is invalid
+
+<br/>
+
+## TODO: Circle Model
+
+#### `GET /api/circles?username=USERNAME` - Get circles by username
+
+**Returns**
+
+- An array of circles created by user with username `username`
+
+**Throws**
+
+- `400` if `username` is not given
+- `404` if `username` is not a recognized username of any user
+
+#### `POST /api/circles` - Create a new circle
+
+**Body**
+
+- `name` _{string}_ - The name of the circle 
+- `username` _{string}_ - The username of the user creating the circle
+- `users` _{string}_ - A list of comma-separated usernames of users to add to circle
+
+**Returns**
+
+- A success message
+- A object with the created circle
+
+**Throws**
+
+- `400` If no users specified
+- `403` If the user is not logged in
+- `404` If one or more of the users does not exist
+
+#### `DELETE /api/circles/:circleId?` - Delete an existing circle
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the user is not the creator of the circle
+- `404` if the circleId is invalid
+
+#### `PUT /api/circles/:circleId?` - Update an existing circle
+
+**Body**
+
+- `name` _{string}_ - The name of the circle 
+- `users` _{string}_ - A list of comma-separated usernames of users to add to circle
+
+**Returns**
+
+- A success message
+- An object with the updated circle
+
+**Throws**
+
+- `400` if users list given but no users specified
+- `403` if the user is not logged in
+- `403` if the user is not the creator of the circle
+- `404` if the circleId is invalid
+
+<br/>
+
+## TODO: Bot Score Model
+
+#### `GET /api/botscores` - Get all the botscores
+
+**Returns**
+
+- An array of all bot score objects
+
+#### `GET /api/botscores?username=USERNAME` - Get the botscore by username
+
+**Returns**
+
+- The one unique botscore for the user with username `username`
+
+**Throws**
+
+- `400` if `username` is not given
+- `404` if `username` is not a recognized username of any user
+
+#### `POST /api/botscores` - Create a new botscore
+
+**Body**
+
+- `username` _{string}_ - The username of the user to which the botscore pertains to
+- `score` _{number}_ - A percentage (with the '%' symbol) representing the user's botscore
+- `threshold` _{number}_ - The user's botscore threshold (percentage) for filtering accounts 
+
+**Returns**
+
+- A success message
+- A object with the created botscore
+
+**Throws**
+
+- `400` If no username, score, or threshold specified
+- `400` If score/threshold are not integers in [0, 100]
+- `403` If the user is not logged in
+
+#### `DELETE /api/botscores/:botscoreId?` - Delete an existing botscore
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the botscoreId is invalid
+
+#### `PUT /api/botscores/:botscoreId?` - Update an existing botscore
+
+**Body**
+
+- `score` _{number}_ - A percentage (with the '%' symbol) representing the user's botscore
+- `threshold` _{number}_ - The user's botscore threshold (percentage) for filtering accounts
+
+**Returns**
+
+- A success message
+- An object with the updated botscore
+
+**Throws**
+
+- `403` if the user is not logged in
+- `403` if the botscore does not belong to the user
+- `404` if the botscoreId is invalid
+
+<br/>
+
+## TODO: Feed Settings Model
+
+#### `GET /api/feedsettings?username=USERNAME` - Get the feed settings by username
+
+**Returns**
+
+- The one unique feed settings object for the user with username `username`
+
+**Throws**
+
+- `400` if `username` is not given
+- `404` if `username` is not a recognized username of any user
+
+#### `POST /api/feedsettings` - Create a new feed settings
+
+**Body**
+
+- `username` _{string}_ - The username of the user to which the feed settings pertain to
+- `botscoreId` _{string}_ - The botscoreId for the feedsettings
+- `directFollowingOnly` _{boolean}_ - True to only include posts from accounts that user directly follows
+
+**Returns**
+
+- A success message
+- A object with the created feedsettings
+
+**Throws**
+
+- `400` If no username, botscoreId, or directFollowingOnly specified
+- `403` If the user is not logged in
+- `404` If botscoreId does not exist
+
+#### `DELETE /api/feedsettings/:feedsettingId?` - Delete an existing feed setting
+
+**Returns**
+
+- A success message
+
+**Throws**
+
+- `403` if the user is not logged in
+- `404` if the feedsettingId is invalid
+
+#### `PUT /api/feedsettings/:feedsettingsId?` - Update an existing feed setting
+
+**Body**
+
+- `directFollowingOnly` _{boolean}_ - True to only include posts from accounts that user directly follows
+
+**Returns**
+
+- A success message
+- An object with the updated botscore
+
+**Throws**
+
+- `400` if the directFollowingOnly is not provided
+- `403` if the user is not logged in
+

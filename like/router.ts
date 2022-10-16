@@ -13,7 +13,7 @@ const router = express.Router();
  *
  * @name GET /api/likes
  *
- * @return {FreetResponse[]} - A list of all the freets sorted in descending
+ * @return {LikeResponse[]} - A list of all the freets sorted in descending
  *                      order by date modified
  */
 /**
@@ -21,7 +21,7 @@ const router = express.Router();
  *
  * @name GET /api/likes?username=USERNAME
  *
- * @return {FreetResponse[]} - An array of likes liked by user with username `username`
+ * @return {LikeResponse[]} - An array of likes liked by user with username `username`
  * @throws {400} - If username is not given
  * @throws {404} - If no user has given USERNAME
  *
@@ -58,7 +58,6 @@ router.get(
  * @return {LikeReponse} - The created like
  * @throws {403} - If the user is not logged in
  * @throws {400} - If the freet does not exist
- * @throws {413} - If the freet content is more than 140 characters long
  */
 router.post(
   '/',
