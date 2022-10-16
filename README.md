@@ -508,31 +508,31 @@ This renders the `index.html` file that will be used to interact with the backen
 
 <br/>
 
-## TODO: Feed Settings Model
+## TODO: Personal Feed Model
 
-#### `GET /api/feedsettings?username=USERNAME` - Get the feed settings by username
+#### `GET /api/personalfeeds?username=USERNAME` - Get the personal feed by username
 
 **Returns**
 
-- The one unique feed settings object for the user with username `username`
+- The one unique personal feed object for the user with username `username`
 
 **Throws**
 
 - `400` if `username` is not given
 - `404` if `username` is not a recognized username of any user
 
-#### `POST /api/feedsettings` - Create a new feed settings
+#### `POST /api/personalfeeds` - Create a new personal feed
 
 **Body**
 
-- `username` _{string}_ - The username of the user to which the feed settings pertain to
-- `botscoreId` _{string}_ - The botscoreId for the feedsettings
+- `username` _{string}_ - The username of the user to which the personal feed pertain to
+- `botscoreId` _{string}_ - The botscoreId for the personal feed
 - `directFollowingOnly` _{boolean}_ - True to only include posts from accounts that user directly follows
 
 **Returns**
 
 - A success message
-- A object with the created feedsettings
+- A object with the created personalfeed
 
 **Throws**
 
@@ -540,7 +540,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` If the user is not logged in
 - `404` If botscoreId does not exist
 
-#### `DELETE /api/feedsettings/:feedsettingId?` - Delete an existing feed setting
+#### `DELETE /api/personalfeeds/:personalfeedId?` - Delete an existing personal feed
 
 **Returns**
 
@@ -549,9 +549,9 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if the user is not logged in
-- `404` if the feedsettingId is invalid
+- `404` if the personalfeedId is invalid
 
-#### `PUT /api/feedsettings/:feedsettingsId?` - Update an existing feed setting
+#### `PUT /api/personalfeeds/:personalfeedId?` - Update an existing personal feed
 
 **Body**
 
@@ -603,7 +603,7 @@ This renders the `index.html` file that will be used to interact with the backen
 **Returns**
 
 - A success message
-- A object with the created feedsettings
+- A object with the created personal feed
 
 **Throws**
 
