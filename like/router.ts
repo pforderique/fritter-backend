@@ -90,10 +90,11 @@ router.delete(
   '/:likeId?',
   [
     userValidator.isUserLoggedIn,
-    likeValidator.isLikeExists
+    likeValidator.isLikeExists,
+    likeValidator.isLikeBelongToUser
   ],
   async (req: Request, res: Response) => {
-    await LikeCollection.deleteOne(req.params.freetId);
+    await LikeCollection.deleteOne(req.params.likeId);
     res.status(200).json({
       message: 'Your like was deleted successfully.'
     });

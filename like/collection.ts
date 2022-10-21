@@ -49,10 +49,11 @@ class LikeCollection {
    * Get all the likes by username
    *
    * @param {string} username - The username of liker of the likes
-   * @return {Promise<HydratedDocument<Like>[]>} - An array of all of the freets
+   * @return {Promise<HydratedDocument<Like>[]>} - An array of likes
    */
   static async findAllByUsername(username: string): Promise<Array<HydratedDocument<Like>>> {
     const user = await UserCollection.findOneByUsername(username);
+    // after populate, map over objs
     return LikeModel.find({userId: user._id}).populate('freetId userId');
   }
 
@@ -64,7 +65,7 @@ class LikeCollection {
   /**
    * Delete a like with given likeId.
    *
-   * @param {string} likeId - The likeId of freet to delete
+   * @param {string} likeId - The likeId of like to delete
    * @return {Promise<Boolean>} - true if the like has been deleted, false otherwise
    */
   static async deleteOne(likeId: Types.ObjectId | string): Promise<boolean> {

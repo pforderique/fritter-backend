@@ -365,12 +365,12 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Returns**
 
-- A success message
+- `200` and success message if item deleted
 
 **Throws**
 
 - `403` if the user is not logged in
-- `404` if the likeId is invalid
+- `404` if the likeId is invalid or does not belong to current user
 
 <br/>
 
@@ -597,8 +597,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Body**
 
-- `follower` _{string}_ - The username of the user that is doing the following
-- `followee` _{string}_ - The username of the user that is being followed
+- `following` _{string}_ - The username of the user that is being followed
 
 **Returns**
 
