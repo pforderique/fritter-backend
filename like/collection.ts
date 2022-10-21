@@ -53,7 +53,6 @@ class LikeCollection {
    */
   static async findAllByUsername(username: string): Promise<Array<HydratedDocument<Like>>> {
     const user = await UserCollection.findOneByUsername(username);
-    // after populate, map over objs
     return LikeModel.find({userId: user._id}).populate('freetId userId');
   }
 

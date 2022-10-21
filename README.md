@@ -571,33 +571,25 @@ This renders the `index.html` file that will be used to interact with the backen
 
 ## TODO: Follow Model
 
-#### `GET /api/follow?follower=USERNAME` - Get follows by follower username
+#### `GET /api/follows` - Get all follows for debugging
+
+**Returns**
+
+- An array of all bot score objects
+
+#### `GET /api/follows?follower=USERNAME` - Get follows by follower username
 
 **Returns**
 
 - An array of follow objects where the follower has username `username`
 
-**Throws**
-
-- `400` if `follower` is not given
-- `404` if `follower` is not a recognized username of any user
-
-#### `GET /api/follow?following=USERNAME` - Get follows by following username
+#### `GET /api/follows?followee=USERNAME` - Get follows by followee username
 
 **Returns**
 
 - An array of follow objects where the followee has username `username`
 
-**Throws**
-
-- `400` if `followee` is not given
-- `404` if `followee` is not a recognized username of any user
-
-#### `POST /api/follow` - Create a new follow
-
-**Body**
-
-- `following` _{string}_ - The username of the user that is being followed
+#### `POST /api/follows/:followee` - Follow user with username `followee`
 
 **Returns**
 
@@ -606,11 +598,11 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `400` If no follower or followee specified
-- `403` If the follower user is not logged in
-- `404` If follower or followee does not exist
+- `400` If no followee specified
+- `403` If user is not logged in
+- `404` If followee does not exist
 
-#### `DELETE /api/follow/:followId?` - Delete an existing follow
+#### `DELETE /api/follows/:followId?` - Delete an existing follow
 
 **Returns**
 
@@ -619,5 +611,3 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `403` if the user is not logged in
-- `404` if the followId is invalid
-

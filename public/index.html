@@ -5,6 +5,7 @@
   <meta name="author" content="6.170 Staff">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/scripts/follow.js"></script>
   <script src="/scripts/freet.js"></script>
   <script src="/scripts/like.js"></script>
   <script src="/scripts/user.js"></script>
@@ -163,6 +164,52 @@
               <input id="id" name="id">
             </div>
             <input type="submit" value="Delete Like">
+          </form>
+        </section>
+
+        <!-- FOLLOWS -->
+        <section>
+          <br>
+          <h2 style="display: flex; justify-content: center">Follows API</h2>
+          <form id="view-all-follows">
+              <h3>View All Follows</h3>
+              <input type="submit" value="View All Follows">
+          </form>
+
+          <form id="view-follows-by-follower">
+            <h3>View Follows by Follower</h3>
+            <div>
+              <label for="follower">Follower Username:</label>
+              <input id="follower" name="follower">
+            </div>
+            <input type="submit" value="View Follows by Follower">
+          </form>
+
+          <form id="view-follows-by-followee">
+            <h3>View Follows by Followee</h3>
+            <div>
+              <label for="followee">Followee Username:</label>
+              <input id="followee" name="followee">
+            </div>
+            <input type="submit" value="View Follows by Followee">
+          </form>
+
+          <form id="create-follow">
+            <h3>Create Follow</h3>
+            <div>
+              <label for="followee">Username to Follow</label>
+              <textarea id="followee" name="followee"></textarea>
+            </div>
+            <input type="submit" value="Create Follow">
+          </form>
+
+          <form id="delete-follow">
+            <h3>Delete Follow</h3>
+            <div>
+              <label for="id">ID:</label>
+              <input id="id" name="id">
+            </div>
+            <input type="submit" value="Delete Follow">
           </form>
         </section>
 

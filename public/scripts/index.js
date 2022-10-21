@@ -44,7 +44,13 @@ const formsAndHandlers = {
   'view-all-likes': viewAllLikes,
   'view-likes-by-username': viewLikesByUsername,
   'create-like': createLike,
-  'delete-like': deleteLike
+  'delete-like': deleteLike,
+
+  'view-all-follows': viewAllFollows,
+  'view-follows-by-follower': viewFollowsByFollower,
+  'view-follows-by-followee': viewFollowsByFollowee,
+  'create-follow': createFollow,
+  'delete-follow': deleteFollow
 };
 
 // Attach handlers to forms

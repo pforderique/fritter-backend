@@ -13,7 +13,7 @@ const router = express.Router();
  *
  * @name GET /api/likes
  *
- * @return {LikeResponse[]} - A list of all the freets sorted in descending
+ * @return {LikeResponse[]} - A list of all the likes sorted in descending
  *                      order by date modified
  */
 /**
@@ -94,7 +94,7 @@ router.delete(
     likeValidator.isLikeBelongToUser
   ],
   async (req: Request, res: Response) => {
-    await LikeCollection.deleteOne(req.params.likeId);
+    await LikeCollection.deleteOne(req.params.like);
     res.status(200).json({
       message: 'Your like was deleted successfully.'
     });
