@@ -119,8 +119,12 @@ class FollowCollection {
    *
    * @param {string} userId - The id of user
    */
-  static async deleteMany(userId: Types.ObjectId | string): Promise<void> {
-    await FollowModel.deleteMany({userId});
+  static async deleteMany(userId: Types.ObjectId | string): Promise<boolean> {
+    const results = await Promise.all([
+      FollowModel.deleteMany({followerId: userId}),
+      FollowModel.deleteMany({followingId: userId})
+    ]);
+    return results.every(res => res === null);
   }
 }
 

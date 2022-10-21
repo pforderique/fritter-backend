@@ -173,7 +173,7 @@ within the schema. This tells us that the `content` field must have type `String
 
 This renders the `index.html` file that will be used to interact with the backend
 
-## Freets Model
+## Post (Freets) Model
 
 #### `GET /api/freets` - Get all the freets
 
@@ -374,7 +374,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 <br/>
 
-## TODO: Circle Model
+## TODO: Fritter Circles (Circle)  Model
 
 #### `GET /api/circles?username=USERNAME` - Get circles by username
 
@@ -393,7 +393,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 - `name` _{string}_ - The name of the circle 
 - `username` _{string}_ - The username of the user creating the circle
-- `users` _{string}_ - A list of comma-separated usernames of users to add to circle
+- `membersId` _{string}_ - A list of comma-separated usernames of users to add to circle
 
 **Returns**
 
@@ -423,7 +423,7 @@ This renders the `index.html` file that will be used to interact with the backen
 **Body**
 
 - `name` _{string}_ - The name of the circle 
-- `users` _{string}_ - A list of comma-separated usernames of users to add to circle
+- `memberIds` _{string}_ - A list of comma-separated ids of users to represent new circle
 
 **Returns**
 
@@ -569,7 +569,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 <br/>
 
-## TODO: Follow Model
+## Follow Model
 
 #### `GET /api/follows` - Get all follows for debugging
 
