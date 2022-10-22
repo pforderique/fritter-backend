@@ -50,7 +50,13 @@ const formsAndHandlers = {
   'view-follows-by-follower': viewFollowsByFollower,
   'view-follows-by-followee': viewFollowsByFollowee,
   'create-follow': createFollow,
-  'delete-follow': deleteFollow
+  'delete-follow': deleteFollow,
+
+  'view-all-circles': viewAllCircles,
+  'view-circles-by-creator': viewCirclesByCreator,
+  'create-circle': createCircle,
+  'edit-circle': editCircle,
+  'delete-circle': deleteCircle
 };
 
 // Attach handlers to forms

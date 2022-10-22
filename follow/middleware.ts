@@ -3,6 +3,9 @@ import {Types} from 'mongoose';
 import FreetCollection from '../freet/collection';
 import LikeCollection from './collection';
 
+// eslint-disable-next-line no-warning-comments
+// TODO(pf): Delete all of this and create middleware for Follow concept.
+
 /**
  * Checks if a like with freetId in req.params exists
  */

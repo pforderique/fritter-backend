@@ -5,6 +5,7 @@
   <meta name="author" content="6.170 Staff">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/scripts/circle.js"></script>
   <script src="/scripts/follow.js"></script>
   <script src="/scripts/freet.js"></script>
   <script src="/scripts/like.js"></script>
@@ -210,6 +211,72 @@
               <input id="id" name="id">
             </div>
             <input type="submit" value="Delete Follow">
+          </form>
+        </section>
+
+        <!-- CIRCLES -->
+        <section>
+          <br>
+          <h2 style="display: flex; justify-content: center">Circles API</h2>
+          <form id="view-all-circles">
+              <h3>View All Circles</h3>
+              <input type="submit" value="View All Circles">
+          </form>
+
+          <form id="view-circles-by-creator">
+            <h3>View Circles by Creator</h3>
+            <div>
+              <label for="username">Creator's Username:</label>
+              <input id="username" name="username">
+            </div>
+            <input type="submit" value="View Circles by Creator">
+          </form>
+
+          <form id="create-circle">
+            <h3>Create Circle</h3>
+            <div>
+              <label for="name">Circle Name</label>
+              <textarea id="name" name="name"></textarea>
+            </div>
+            <div>
+              <label for="membersId">Member Ids (comma separated):</label>
+              <textarea id="membersId" name="membersId"></textarea>
+            </div>
+            <input type="submit" value="Create Circle">
+          </form>
+
+          <form id="edit-circle">
+            <h3>Edit Circle</h3>
+            <div>
+              <label for="id">ID:</label>
+              <input id="id" name="id">
+            </div>
+            <div>
+              <label for="name">Name:</label>
+              <textarea
+                id="name"
+                name="name"
+                placeholder="Leave empty if no name update"
+              ></textarea>
+            </div>
+            <div>
+              <label for="membersId">Member Ids (comma separated):</label>
+              <textarea
+                id="membersId"
+                name="membersId"
+                placeholder="Leave empty if no memberIds update"
+              ></textarea>
+            </div>
+            <input type="submit" value="Edit Circle">
+          </form>
+
+          <form id="delete-circle">
+            <h3>Delete Circle</h3>
+            <div>
+              <label for="id">ID:</label>
+              <input id="id" name="id">
+            </div>
+            <input type="submit" value="Delete Circle">
           </form>
         </section>
 

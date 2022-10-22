@@ -6,6 +6,7 @@ import LikeCollection from '../like/collection';
 import UserCollection from './collection';
 import * as userValidator from '../user/middleware';
 import * as util from './util';
+import CircleCollection from '../circle/collection';
 
 const router = express.Router();
 
@@ -165,7 +166,8 @@ router.delete(
       UserCollection.deleteOne(userId),
       FreetCollection.deleteMany(userId),
       LikeCollection.deleteMany(userId),
-      FollowCollection.deleteMany(userId)
+      FollowCollection.deleteMany(userId),
+      CircleCollection.deleteMany(userId)
     ]);
     req.session.userId = undefined;
     req.session.username = undefined;

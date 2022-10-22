@@ -376,6 +376,12 @@ This renders the `index.html` file that will be used to interact with the backen
 
 ## TODO: Fritter Circles (Circle)  Model
 
+#### `GET /api/circles` - Get all circles for debugging
+
+**Returns**
+
+- An array of all circles
+
 #### `GET /api/circles?username=USERNAME` - Get circles by username
 
 **Returns**
@@ -392,7 +398,6 @@ This renders the `index.html` file that will be used to interact with the backen
 **Body**
 
 - `name` _{string}_ - The name of the circle 
-- `username` _{string}_ - The username of the user creating the circle
 - `membersId` _{string}_ - A list of comma-separated usernames of users to add to circle
 
 **Returns**
@@ -402,7 +407,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `400` If no users specified
+- `400` If no members or nonempty name specified
 - `403` If the user is not logged in
 - `404` If one or more of the users does not exist
 
@@ -433,6 +438,7 @@ This renders the `index.html` file that will be used to interact with the backen
 **Throws**
 
 - `400` if users list given but no users specified
+- `400` if name specified but is empty string
 - `403` if the user is not logged in
 - `403` if the user is not the creator of the circle
 - `404` if the circleId is invalid
