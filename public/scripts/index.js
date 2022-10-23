@@ -56,7 +56,13 @@ const formsAndHandlers = {
   'view-circles-by-creator': viewCirclesByCreator,
   'create-circle': createCircle,
   'edit-circle': editCircle,
-  'delete-circle': deleteCircle
+  'delete-circle': deleteCircle,
+
+  'view-all-botscores': viewAllBotscores,
+  'view-botscore-by-username': viewBotscoreByUsername,
+  'create-botscore': createBotscore,
+  'edit-botscore': editBotscore,
+  'delete-botscore': deleteBotscore
 };
 
 // Attach handlers to forms

@@ -2,6 +2,8 @@ import type {Request, Response, NextFunction} from 'express';
 import {Types} from 'mongoose';
 import UserCollection from '../user/collection';
 
+const ADMIN_USERNAMES = ['fabrizzioorderique', 'pforderique'];
+
 /**
  * Checks if the current session user (if any) still exists in the database, for instance,
  * a user may try to post a freet in some browser while the account has been deleted in another or
@@ -175,6 +177,20 @@ const isUsernameExists = async (req: Request, res: Response, next: NextFunction)
   next();
 };
 
+/**
+ * Checks if logged in user is an admin user
+ */
+const isAdminUser = async (req: Request, res: Response, next: NextFunction) => {
+  if (!ADMIN_USERNAMES.includes(req.session.username)) {
+    res.status(403).json({
+      PermissionError: `The signed in user ${req.session.username as string} is not an admin.`
+    });
+    return;
+  }
+
+  next();
+};
+
 export {
   isCurrentSessionUserExists,
   isUserLoggedIn,
@@ -184,5 +200,6 @@ export {
   isUsernameExists,
   isAuthorExists,
   isValidUsername,
-  isValidPassword
+  isValidPassword,
+  isAdminUser
 };

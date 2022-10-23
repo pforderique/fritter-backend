@@ -5,6 +5,7 @@
   <meta name="author" content="6.170 Staff">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <script src="/scripts/botscore.js"></script>
   <script src="/scripts/circle.js"></script>
   <script src="/scripts/follow.js"></script>
   <script src="/scripts/freet.js"></script>
@@ -277,6 +278,72 @@
               <input id="id" name="id">
             </div>
             <input type="submit" value="Delete Circle">
+          </form>
+        </section>
+
+        <!-- BOTSCORES -->
+        <section>
+          <br>
+          <h2 style="display: flex; justify-content: center">Botscores API</h2>
+          <form id="view-all-botscores">
+              <h3>View All Botscores</h3>
+              <input type="submit" value="View All Botscores">
+          </form>
+
+          <form id="view-botscore-by-username">
+            <h3>View Botscore by Usernmae</h3>
+            <div>
+              <label for="username">Creator's Username:</label>
+              <input id="username" name="username">
+            </div>
+            <input type="submit" value="View Botscores by Username">
+          </form>
+
+          <form id="create-botscore">
+            <h3>Create Botscore</h3>
+            <div>
+              <label for="score">Botscore Score</label>
+              <input id="score" name="score"></input>
+            </div>
+            <div>
+              <label for="threshold">Botscore Threshold</label>
+              <input id="threshold" name="threshold"></input>
+            </div>
+            <input type="submit" value="Create Botscore">
+          </form>
+
+          <form id="edit-botscore">
+            <h3>Edit Botscore</h3>
+            <div>
+              <label for="id">ID:</label>
+              <input id="id" name="id">
+            </div>
+            <div>
+              <label for="score">Botscore Score</label>
+              <input
+                id="score"
+                name="score"
+                placeholder="Leave empty if no update">
+              </input>
+            </div>
+            <div>
+              <label for="threshold">Botscore Threshold</label>
+              <input
+                id="threshold"
+                name="threshold"
+                placeholder="Leave empty if no update"
+              ></input>
+            </div>
+            <input type="submit" value="Edit Botscore">
+          </form>
+
+          <form id="delete-botscore">
+            <h3>Delete Botscore</h3>
+            <div>
+              <label for="id">ID:</label>
+              <input id="id" name="id">
+            </div>
+            <input type="submit" value="Delete Botscore">
           </form>
         </section>
 

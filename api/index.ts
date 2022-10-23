@@ -10,6 +10,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import * as userValidator from '../user/middleware';
 import {userRouter} from '../user/router';
+import {botscoreRouter} from '../botscore/router';
 import {circleRouter} from '../circle/router';
 import {freetRouter} from '../freet/router';
 import {likeRouter} from '../like/router';
@@ -82,6 +83,7 @@ app.use('/api/freets', freetRouter);
 app.use('/api/likes', likeRouter);
 app.use('/api/follows', followRouter);
 app.use('/api/circles', circleRouter);
+app.use('/api/botscores', botscoreRouter);
 
 // Catch all the other routes and display error message
 app.all('*', (req: Request, res: Response) => {

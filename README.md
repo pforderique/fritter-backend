@@ -468,7 +468,6 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Body**
 
-- `username` _{string}_ - The username of the user to which the botscore pertains to
 - `score` _{number}_ - A percentage (with the '%' symbol) representing the user's botscore
 - `threshold` _{number}_ - The user's botscore threshold (percentage) for filtering accounts 
 
@@ -479,7 +478,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 **Throws**
 
-- `400` If no username, score, or threshold specified
+- `400` If no score or threshold specified
 - `400` If score/threshold are not integers in [0, 100]
 - `403` If the user is not logged in
 

@@ -4,9 +4,10 @@ import FollowCollection from '../follow/collection';
 import FreetCollection from '../freet/collection';
 import LikeCollection from '../like/collection';
 import UserCollection from './collection';
+import CircleCollection from '../circle/collection';
+import BotscoreCollection from '../botscore/collection';
 import * as userValidator from '../user/middleware';
 import * as util from './util';
-import CircleCollection from '../circle/collection';
 
 const router = express.Router();
 
@@ -108,6 +109,7 @@ router.post(
   ],
   async (req: Request, res: Response) => {
     const user = await UserCollection.addOne(req.body.username, req.body.password);
+    const botscore = await BotscoreCollection.addOne(user._id, 0, 100); // Default
     req.session.userId = user._id.toString();
     req.session.username = user.username;
     res.status(201).json({
@@ -167,7 +169,8 @@ router.delete(
       FreetCollection.deleteMany(userId),
       LikeCollection.deleteMany(userId),
       FollowCollection.deleteMany(userId),
-      CircleCollection.deleteMany(userId)
+      CircleCollection.deleteMany(userId),
+      BotscoreCollection.deleteMany(userId)
     ]);
     req.session.userId = undefined;
     req.session.username = undefined;
