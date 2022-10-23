@@ -29,8 +29,3 @@ function editBotscore(fields) {
     .catch(showResponse);
 }
 
-function deleteBotscore(fields) {
-  fetch(`/api/botscores/${fields.id}`, {method: 'DELETE'})
-    .then(showResponse)
-    .catch(showResponse);
-}

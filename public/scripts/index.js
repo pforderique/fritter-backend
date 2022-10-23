@@ -32,6 +32,7 @@ const formsAndHandlers = {
   'delete-user': deleteUser,
   'change-username': changeUsername,
   'change-password': changePassword,
+  'change-showDirectFollowingOnly': changeShowDirectFollowingOnly,
   'sign-in': signIn,
   'sign-out': signOut,
 
@@ -61,8 +62,7 @@ const formsAndHandlers = {
   'view-all-botscores': viewAllBotscores,
   'view-botscore-by-username': viewBotscoreByUsername,
   'create-botscore': createBotscore,
-  'edit-botscore': editBotscore,
-  'delete-botscore': deleteBotscore
+  'edit-botscore': editBotscore
 };
 
 // Attach handlers to forms

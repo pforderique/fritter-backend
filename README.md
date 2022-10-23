@@ -374,7 +374,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 <br/>
 
-## TODO: Fritter Circles (Circle)  Model
+## Fritter Circles (Circle)  Model
 
 #### `GET /api/circles` - Get all circles for debugging
 
@@ -445,7 +445,7 @@ This renders the `index.html` file that will be used to interact with the backen
 
 <br/>
 
-## TODO: Bot Score Model
+## Bot Score Model
 
 #### `GET /api/botscores` - Get all the botscores
 
@@ -481,17 +481,7 @@ This renders the `index.html` file that will be used to interact with the backen
 - `400` If no score or threshold specified
 - `400` If score/threshold are not integers in [0, 100]
 - `403` If the user is not logged in
-
-#### `DELETE /api/botscores/:botscoreId?` - Delete an existing botscore
-
-**Returns**
-
-- A success message
-
-**Throws**
-
-- `403` if the user is not logged in
-- `404` if the botscoreId is invalid
+- `409` - If the user already has a botscore
 
 #### `PUT /api/botscores/:botscoreId?` - Update an existing botscore
 
@@ -510,69 +500,6 @@ This renders the `index.html` file that will be used to interact with the backen
 - `403` if the user is not logged in
 - `403` if the botscore does not belong to the user
 - `404` if the botscoreId is invalid
-
-<br/>
-
-## TODO: Personal Feed Model
-
-#### `GET /api/personalfeeds?username=USERNAME` - Get the personal feed by username
-
-**Returns**
-
-- The one unique personal feed object for the user with username `username`
-
-**Throws**
-
-- `400` if `username` is not given
-- `404` if `username` is not a recognized username of any user
-
-#### `POST /api/personalfeeds` - Create a new personal feed
-
-**Body**
-
-- `username` _{string}_ - The username of the user to which the personal feed pertain to
-- `botscoreId` _{string}_ - The botscoreId for the personal feed
-- `directFollowingOnly` _{boolean}_ - True to only include posts from accounts that user directly follows
-
-**Returns**
-
-- A success message
-- A object with the created personalfeed
-
-**Throws**
-
-- `400` If no username, botscoreId, or directFollowingOnly specified
-- `403` If the user is not logged in
-- `404` If botscoreId does not exist
-
-#### `DELETE /api/personalfeeds/:personalfeedId?` - Delete an existing personal feed
-
-**Returns**
-
-- A success message
-
-**Throws**
-
-- `403` if the user is not logged in
-- `404` if the personalfeedId is invalid
-
-#### `PUT /api/personalfeeds/:personalfeedId?` - Update an existing personal feed
-
-**Body**
-
-- `directFollowingOnly` _{boolean}_ - True to only include posts from accounts that user directly follows
-
-**Returns**
-
-- A success message
-- An object with the updated botscore
-
-**Throws**
-
-- `400` if the directFollowingOnly is not provided
-- `403` if the user is not logged in
-
-<br/>
 
 ## Follow Model
 

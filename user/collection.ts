@@ -20,8 +20,9 @@ class UserCollection {
    */
   static async addOne(username: string, password: string): Promise<HydratedDocument<User>> {
     const dateJoined = new Date();
+    const showDirectFollowingOnly = false;
 
-    const user = new UserModel({username, password, dateJoined});
+    const user = new UserModel({username, password, showDirectFollowingOnly, dateJoined});
     await user.save(); // Saves user to MongoDB
     return user;
   }
@@ -53,6 +54,10 @@ class UserCollection {
    * @return {Promise<HydratedDocument<User>> | Promise<null>} - The user with the given username, if any
    */
   static async findOneByUsername(username: string): Promise<HydratedDocument<User>> {
+    if (!username) {
+      return null;
+    }
+
     return UserModel.findOne({username: new RegExp(`^${username.trim()}$`, 'i')});
   }
 
@@ -85,6 +90,10 @@ class UserCollection {
 
     if (userDetails.username) {
       user.username = userDetails.username as string;
+    }
+
+    if (userDetails.showDirectFollowingOnly) {
+      user.showDirectFollowingOnly = userDetails.showDirectFollowingOnly as boolean;
     }
 
     await user.save();

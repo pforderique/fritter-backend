@@ -11,6 +11,7 @@ export type User = {
   _id: Types.ObjectId; // MongoDB assigns each object this ID on creation
   username: string;
   password: string;
+  showDirectFollowingOnly: boolean;
   dateJoined: Date;
 };
 
@@ -21,11 +22,17 @@ const UserSchema = new Schema({
   // The user's username
   username: {
     type: String,
-    required: true
+    required: true,
+    unique: true
   },
   // The user's password
   password: {
     type: String,
+    required: true
+  },
+  // User's preference for where posts they see come from
+  showDirectFollowingOnly: {
+    type: Boolean,
     required: true
   },
   // The date the user joined

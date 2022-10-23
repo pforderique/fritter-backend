@@ -93,28 +93,10 @@ router.post(
 );
 
 /**
- * Delete a botscore
- *
- * @name DELETE /api/botscores/:botscoreId
- *
- * @return {string} - A success message
- * @throws {403} - If the user is not logged in
- * @throws {404} - If the botscoreId is not valid
+ * DELETE not included because user or admin should never have to delete
+ * a users botscore. This should be cleared automatically only when a
+ * user is deleted.
  */
-router.delete(
-  '/:botscoreId?',
-  [
-    userValidator.isUserLoggedIn,
-    botscoreValidator.isBotscoreExists,
-    botscoreValidator.isBotscoreBelongToUser
-  ],
-  async (req: Request, res: Response) => {
-    await BotscoreCollection.deleteOne(req.params.botscore);
-    res.status(200).json({
-      message: 'Your botscore was deleted successfully.'
-    });
-  }
-);
 
 /**
  * Modify a botscore
